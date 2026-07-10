@@ -110,18 +110,20 @@ tr:last-child td{border-bottom:none}
   <div class="hero-strip">
     <div class="cyan-bar"></div>
     <h1>CRM Playbook: Email Templates &amp; Team Setup</h1>
-    <p>Banner, body and footer specification for the Consultation and Quote follow-up sequences, Bon Voyage and Welcome Home sends, and bulk deal emails, plus rollout, training and round robin routing for the team.</p>
+    <p>Banner, body and footer specification for the enquiry received and agent introduction emails, the Consultation and Quote follow-up sequences, Bon Voyage and Welcome Home sends, and bulk deal emails, plus rollout, training and round robin routing for the team.</p>
   </div>
 
   <div class="toc">
     <a href="javascript:void(0)" onclick="jump(event,'specs')">1. Build specs</a>
-    <a href="javascript:void(0)" onclick="jump(event,'followups')">2. Follow-up sequences</a>
-    <a href="javascript:void(0)" onclick="jump(event,'footer')">3. Footer requirements</a>
-    <a href="javascript:void(0)" onclick="jump(event,'bonvoyage')">4. Bon Voyage</a>
-    <a href="javascript:void(0)" onclick="jump(event,'welcomehome')">5. Welcome Home</a>
-    <a href="javascript:void(0)" onclick="jump(event,'bulkdeals')">6. Bulk deals &amp; promotions</a>
-    <a href="javascript:void(0)" onclick="jump(event,'training')">7. Team training</a>
-    <a href="javascript:void(0)" onclick="jump(event,'knowledge')">8. Team knowledge &amp; round robin</a>
+    <a href="javascript:void(0)" onclick="jump(event,'enquiryintro')">2. Enquiry received &amp; agent intro</a>
+    <a href="javascript:void(0)" onclick="jump(event,'followups')">3. Follow-up sequences</a>
+    <a href="javascript:void(0)" onclick="jump(event,'footer')">4. Footer requirements</a>
+    <a href="javascript:void(0)" onclick="jump(event,'bonvoyage')">5. Bon Voyage</a>
+    <a href="javascript:void(0)" onclick="jump(event,'welcomehome')">6. Welcome Home</a>
+    <a href="javascript:void(0)" onclick="jump(event,'bulkdeals')">7. Bulk deals &amp; promotions</a>
+    <a href="javascript:void(0)" onclick="jump(event,'training')">8. Team training</a>
+    <a href="javascript:void(0)" onclick="jump(event,'knowledge')">9. Team knowledge &amp; round robin</a>
+    <a href="javascript:void(0)" onclick="jump(event,'journey')">10. Customer journey touchpoints</a>
   </div>
 
   <section class="block" id="specs">
@@ -140,8 +142,53 @@ tr:last-child td{border-bottom:none}
     <div class="note blue">Every template gets tested in Freshmarketer's preview across desktop and mobile, and a live test send to Robs and the agent lead, before it goes into a live workflow.</div>
   </section>
 
+  <section class="block" id="enquiryintro">
+    <h2 class="section-title"><span class="num">2</span>Enquiry received &amp; agent introduction</h2>
+    <p class="section-sub">Two emails covering the gap between an enquiry landing and a named agent taking it over. This is the very first thing a client hears from us, so it carries the most weight for setting expectations honestly.</p>
+
+    <div class="note blue">Two-step today because assignment is manual and can take a while. Once round robin is live and assigning straight from form submission (see the Auto assignment section under Team knowledge &amp; round robin), the wait between these two emails shrinks close to zero, at which point the first email can be retired and "Meet your agent" becomes the sole first-touch send.</div>
+
+    <div class="followup-grid">
+      <div class="fu-card">
+        <div class="fu-banner b1">
+          <div class="fu-eyebrow">Email 1 · Enquiry received</div>
+          <div class="fu-headline">"Your enquiry's been shared with our agents."</div>
+          <div class="fu-sub">Alt: "We've got your {{destination}} enquiry."</div>
+        </div>
+        <div class="fu-body">
+          <div class="fu-timing">Sent immediately on form submission, before anyone is assigned</div>
+          <div class="fu-goal">Job: confirm the enquiry landed and set a realistic timeline. States office hours plainly (so a Friday evening enquiry doesn't sit wondering why nobody's replied by Saturday morning) and gives a genuine expectation for when an agent will be in touch, not a vague "shortly."</div>
+        </div>
+      </div>
+
+      <div class="fu-card">
+        <div class="fu-banner b2">
+          <div class="fu-eyebrow">Email 2 · Meet your agent</div>
+          <div class="fu-headline">"Meet {{agent_name}}, your travel expert."</div>
+          <div class="fu-sub">Alt: "Say hello to {{agent_name}}."</div>
+        </div>
+        <div class="fu-body">
+          <div class="fu-timing">Sent the moment the deal is assigned to an agent</div>
+          <div class="fu-goal">Job: put a real name and face to the enquiry and set the agent up to succeed. Photo, short personal line, and a clear "here's what happens next" so the client's first real interaction feels like a handoff, not a cold start.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub-title">Requirements</h3>
+    <table>
+      <thead><tr><th>Element</th><th>Email 1 · Enquiry received</th><th>Email 2 · Meet your agent</th></tr></thead>
+      <tbody>
+        <tr><td>Banner colour</td><td>Navy</td><td>Navy &rarr; cyan blend</td></tr>
+        <tr><td>Office hours stated</td><td><span class="badge b-req">Required</span></td><td><span class="badge b-opt">Optional</span>, already set expectations in Email 1</td></tr>
+        <tr><td>Agent photo/name</td><td><span class="badge b-opt">Not applicable</span>, no agent assigned yet</td><td><span class="badge b-req">Required</span></td></tr>
+        <tr><td>CTA button</td><td>None needed, purely reassurance</td><td>"Get in touch with {{agent_name}}" or similar direct contact link</td></tr>
+        <tr><td>Timeline honesty</td><td colspan="2">Whatever window is stated must match reality. If assignment is genuinely taking 24 hours right now, say 24 hours, not "shortly"</td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <section class="block" id="followups">
-    <h2 class="section-title"><span class="num">2</span>Follow-up sequences</h2>
+    <h2 class="section-title"><span class="num">3</span>Follow-up sequences</h2>
     <p class="section-sub">Two separate sequences, triggered at different points in the journey. Consultation follow-up fires when someone has enquired but no quote exists yet. Quote follow-up fires once a formal quote has gone out. Each sequence has its own colour family so agents can tell at a glance which stage a client is in.</p>
 
     <div class="fu-group-label"><span class="pill">Consultation follow-up</span><span class="count">2 sends &middot; no quote issued yet</span></div>
@@ -235,7 +282,7 @@ tr:last-child td{border-bottom:none}
   </section>
 
   <section class="block" id="footer">
-    <h2 class="section-title"><span class="num">3</span>Footer requirements</h2>
+    <h2 class="section-title"><span class="num">4</span>Footer requirements</h2>
     <p class="section-sub">Same footer block across all templates below, including Bon Voyage and Welcome Home.</p>
     <ul>
       <li><span class="badge b-req">Required</span> Unsubscribe / manage preferences link</li>
@@ -254,7 +301,7 @@ tr:last-child td{border-bottom:none}
   </section>
 
   <section class="block" id="bonvoyage">
-    <h2 class="section-title"><span class="num">4</span>Bon Voyage</h2>
+    <h2 class="section-title"><span class="num">5</span>Bon Voyage</h2>
     <p class="section-sub">Sent shortly before departure. "Bon Voyage" is what everyone on the team already calls it, so the internal template name stays as is &mdash; these are alternative headline options for the banner itself, not a rename.</p>
     <div class="two-col">
       <div>
@@ -279,7 +326,7 @@ tr:last-child td{border-bottom:none}
   </section>
 
   <section class="block" id="welcomehome">
-    <h2 class="section-title"><span class="num">5</span>Welcome Home</h2>
+    <h2 class="section-title"><span class="num">6</span>Welcome Home</h2>
     <p class="section-sub">Sent a day or two after return. Also a name everyone already uses &mdash; alternative banner wording below for variety, not a replacement.</p>
     <div class="two-col">
       <div>
@@ -303,7 +350,7 @@ tr:last-child td{border-bottom:none}
   </section>
 
   <section class="block" id="bulkdeals">
-    <h2 class="section-title"><span class="num">6</span>Bulk deals &amp; promotions</h2>
+    <h2 class="section-title"><span class="num">7</span>Bulk deals &amp; promotions</h2>
     <p class="section-sub">Agent-initiated sends to their own client base, built from an approved template rather than typed from scratch each time. Different rules apply here since these are marketing sends the client opted into, not lifecycle emails triggered automatically by the CRM.</p>
 
     <div class="note">Marketing consent required. These sends must only go to contacts who've opted in to marketing communication under POPIA, never the full contact list by default. The Freshsales list filter should be set to the marketing consent segment before any bulk send goes out.</div>
@@ -349,7 +396,7 @@ tr:last-child td{border-bottom:none}
   </section>
 
   <section class="block" id="training">
-    <h2 class="section-title"><span class="num">7</span>Team training considerations</h2>
+    <h2 class="section-title"><span class="num">8</span>Team training considerations</h2>
     <p class="section-sub">What needs covering before these templates go live on the team's day-to-day workflow.</p>
     <h3 class="sub-title">Before rollout</h3>
     <ul class="check-list">
@@ -378,7 +425,7 @@ tr:last-child td{border-bottom:none}
   </section>
 
   <section class="block" id="knowledge">
-    <h2 class="section-title"><span class="num">8</span>Team knowledge spread &amp; round robin</h2>
+    <h2 class="section-title"><span class="num">9</span>Team knowledge spread &amp; round robin</h2>
     <p class="section-sub">Editable in place, click any cell to update, changes save to this file in your browser automatically. Use "Reset" to restore the original list.</p>
     <div class="kn-toolbar">
       <div class="kn-status" id="knStatus">Loaded from saved data</div>
@@ -399,6 +446,52 @@ tr:last-child td{border-bottom:none}
     <p>The practical middle ground: keep round robin for the fairness it already gives you, and check deal counts per consultant periodically through reporting, adjusting who sits in each rotation if someone's consistently carrying more than their share. Each specialism becomes its own rule, stacked above a general catch all. More specialisms simply mean more rules stacked in front of the catch all, each scoped to its own smaller group.</p>
     <div class="note blue">The groups below are generated live from the Level column in the table above. Change a team member's level and the rotations update automatically, so this stays accurate as the team changes.</div>
     <div class="rr-grid" id="roundRobinWrap"></div>
+
+    <h3 class="sub-title">Auto assignment: destination detection</h3>
+    <div class="note">Not ready to go live yet. Round robin can only route by destination group once something in the data tells it whether an enquiry is Africa/Dubai/Far East/Indian Ocean Islands or Worldwide, and today's data flow doesn't reliably carry that.</div>
+    <p>The webform's package reference reaches Engage today, but the full package page URL doesn't. That's a known gap on the Engage leg specifically, not a confirmed limitation of the webform or of Zapier as a platform. It may simply be that nobody ever mapped the URL through, since Engage never needed it.</p>
+    <p>Good news on the URL itself: real package URLs confirm the destination sits in plain English right in the slug, alongside the reference code as its own path segment, for example a Stellenbosch property and a Mozambique property both name the destination directly ahead of the "package" and "nights" wording. That means once the full URL is flowing through, detecting destination is straightforward keyword matching against a short list of place names, not an opaque reference code needing a big lookup table to decode.</p>
+    <p>The open question worth settling before anything else: does the webform's raw Zapier trigger payload already include the full package URL, even though it's never been mapped anywhere downstream? If Kim can confirm that, adding it to the Freshsales action step already being built into the Zap is a small field mapping addition, not a new leg. If the webform genuinely never captures or sends the full URL at all, that's a bigger piece of work, a hidden field would need adding to the form itself first.</p>
+    <p>Worth a spot check either way: slugs carry extra noise around the destination (a leading star rating digit, package type wording like "self drive," a nights count, and sometimes a trailing number for duplicate slugs), so a real batch of URLs is worth sampling to confirm place names extract cleanly before relying on it, and to catch city names (Stellenbosch) that need mapping to the right group alongside country names (Mozambique).</p>
+
+    <h3 class="sub-title">Phased approach</h3>
+    <ul class="check-list">
+      <li><strong>Phase 1, now:</strong> add a Destination Group field to Freshsales (Africa, Dubai, Far East &amp; Indian Ocean Islands / Worldwide), set manually by the consultant at the New or Consulting stage. Round robin routes off that field, no dependency on any Zapier change.</li>
+      <li><strong>Phase 2, near term:</strong> extend the Web to Contact data bridge tool with a destination suggestion panel, paste or read in the package URL and match place names against a short destination to group list, so the consultant just confirms a suggestion rather than starting from a cold decision each time.</li>
+      <li><strong>Phase 3, later:</strong> once Kim confirms whether the full package URL is present in the raw trigger data, and the place name matching has been proven reliable over real volume, revisit whether Zapier or a Freshsales workflow should auto populate the field.</li>
+    </ul>
+    <p>Worth raising with Kim directly: is this a genuine platform limitation, or a field that was simply never mapped because Engage never asked for it. That single answer decides whether Phase 3 is a quick field mapping addition or a proper build.</p>
+  </section>
+
+  <section class="block" id="journey">
+    <h2 class="section-title"><span class="num">10</span>Customer journey: travel readiness touchpoints</h2>
+    <p class="section-sub">A different layer to everything above. This isn't a specific template, it's the content layer underneath the emails, what travel-readiness information actually matters, when it's genuinely useful to share it, and what depends on destination or trip type. This section maps the touchpoints, the copy and exact trigger for each gets built out separately.</p>
+
+    <div class="note">Timing matters as much as content. Shared too early, it gets forgotten. Shared too late, there's no runway left to act on it, visas being the clearest example: guidance is only actionable once there's a confirmed itinerary and paid deposit to plan real dates against, so it needs to land as an upfront heads up early, then a firm reminder once those pieces exist.</div>
+    <div class="note blue">Destination and trip type decide what's relevant, this can't be one generic checklist sent to every client. A local trip still needs a valid ID and possibly a driver's license if there's a flight or car rental involved, but has no visa or health considerations. A long-haul international trip needs the full set. Getting this right depends on having destination knowledge in place first, which is exactly why this connects back to the auto assignment thinking above, knowing the destination early is what makes it possible to know which of these touchpoints even apply.</div>
+
+    <h3 class="sub-title">Touchpoint map</h3>
+    <table>
+      <thead><tr><th style="width:14%">Touchpoint</th><th style="width:34%">What it covers</th><th style="width:26%">Timing</th><th style="width:26%">Applies when</th></tr></thead>
+      <tbody>
+        <tr><td>Visas</td><td>Entry requirements, processing time, documents needed to apply</td><td>Upfront heads up once deposit and itinerary exist, then a firm reminder as travel dates approach</td><td>International trips only, and only once destination and dates are confirmed</td></tr>
+        <tr><td>Passports</td><td>Validity windows (many countries need 6 months beyond return date), blank page requirements, renewal lead times</td><td>Upfront, early, renewals can take weeks; reminded again closer to departure</td><td>International trips, this is the one where being late genuinely blocks travel</td></tr>
+        <tr><td>IDs &amp; driver's licenses</td><td>Valid ID for check-in and boarding, International Driving Permit for driving overseas, local license for car hire or domestic flights</td><td>Upfront once a car rental or flight is confirmed</td><td>The only item here that also applies to local trips, not just international ones</td></tr>
+        <tr><td>Health info</td><td>Required or recommended vaccinations, health certificates some borders require, prescription medication logistics</td><td>Upfront, early, some vaccines need weeks to take effect; reminded again closer to departure</td><td>Destination-dependent, not every country needs the same things, unnecessary for local trips</td></tr>
+        <tr><td>e-SIMs &amp; connectivity</td><td>Whether the destination has easy eSIM options, roaming costs, local SIM alternatives</td><td>Mid-journey once destination is confirmed, not urgent enough for the first touch</td><td>International trips, most useful for long-haul or multi-country itineraries</td></tr>
+        <tr><td>Trip-type specific info</td><td>Cruise (embarkation documents, gratuities, dress codes), skiing (gear, winter sports insurance), safari, diving certification, honeymoon touches</td><td>Once the package/trip type is known</td><td>Only fires for the relevant trip type, not a general send</td></tr>
+        <tr><td>Packing tips</td><td>Climate and activity-appropriate packing guidance</td><td>Closest to departure, overlaps with Bon Voyage content, worth cross-referencing rather than duplicating</td><td>All trips, content varies by destination and activity</td></tr>
+        <tr><td>Luggage</td><td>Airline-specific allowances, connecting flight considerations, oversized or sports equipment rules</td><td>Once flights are confirmed, allowances vary by carrier and fare class</td><td>All trips involving flights</td></tr>
+        <tr><td>Travel insurance</td><td>Cancellation cover, medical cover, deposit protection</td><td>Upfront alongside the quote, cover often needs to start before final payment to protect against pre-trip cancellation; reminded again before final payment</td><td>All trips, depth of cover conversation is heavier for international (medical evacuation, etc.) than local</td></tr>
+        <tr><td>Money &amp; currency</td><td>Forex ordering lead time, notifying the bank of travel dates, tipping norms at the destination</td><td>Closer to departure once dates and destination are firm, forex needs a few days' lead time</td><td>Mainly international, card notification also relevant for any trip using cards abroad</td></tr>
+        <tr><td>Unabridged birth certificates for minors</td><td>South African requirement for travelling children, current rule needs confirming before this is written up properly</td><td>Upfront, early, certificate applications can take time</td><td>Bookings that include minors, primarily international</td></tr>
+        <tr><td>Local customs &amp; etiquette</td><td>Dress codes, especially for religious sites or conservative destinations</td><td>Closer to departure, alongside packing tips</td><td>Destination-dependent, mainly international, occasionally relevant domestically too</td></tr>
+        <tr><td>Adapters, voltage &amp; time zones</td><td>Plug type and voltage differences, time zone shift and jet lag awareness</td><td>Closer to departure, could fold into packing tips rather than standing alone</td><td>Adapters/voltage for international trips, time zones mainly for long-haul</td></tr>
+        <tr><td>Emergency contacts &amp; travel advisories</td><td>Local emergency numbers, embassy contacts, government travel advisories where relevant</td><td>Upfront, then again closer to departure</td><td>Mainly international trips</td></tr>
+      </tbody>
+    </table>
+
+    <p>Each row above still needs its own content pass, exact wording, which stage triggers it, whether it lands as an email or a resource page. This table is the map, not the copy.</p>
   </section>
 
 </main>
