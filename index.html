@@ -422,6 +422,14 @@ tr:last-child td{border-bottom:none}
       <li>Confirm who signs off on larger sends once that threshold is set, so agents aren't guessing</li>
       <li>Show agents where to check open rates and unsubscribes after a send, and who to flag it to if numbers look off</li>
     </ul>
+
+    <h3 class="sub-title">Capturing milestone fields</h3>
+    <ul class="check-list">
+      <li>Make it routine, not optional, to log Date of Birth off the passport copy into the new field the moment it's collected, so it doesn't get missed or left sitting in a scanned document nobody revisits</li>
+      <li>Train agents to recognise when a trip is an anniversary or honeymoon booking, and to log the Special Occasion Date and Type field when it comes up naturally, never as a direct question the client didn't volunteer</li>
+      <li>Be clear this is manual entry, not something Freshsales or Zapier fills in automatically, so it only works if it's a consistent habit across the team</li>
+      <li>Cover the POPIA basics on Date of Birth specifically, since it's more sensitive than most fields already being captured</li>
+    </ul>
   </section>
 
   <section class="block" id="knowledge">
@@ -484,13 +492,22 @@ tr:last-child td{border-bottom:none}
         <tr><td>Luggage</td><td>Airline-specific allowances, connecting flight considerations, oversized or sports equipment rules</td><td>Once flights are confirmed, allowances vary by carrier and fare class</td><td>All trips involving flights</td></tr>
         <tr><td>Travel insurance</td><td>Cancellation cover, medical cover, deposit protection</td><td>Upfront alongside the quote, cover often needs to start before final payment to protect against pre-trip cancellation; reminded again before final payment</td><td>All trips, depth of cover conversation is heavier for international (medical evacuation, etc.) than local</td></tr>
         <tr><td>Money &amp; currency</td><td>Forex ordering lead time, notifying the bank of travel dates, tipping norms at the destination</td><td>Closer to departure once dates and destination are firm, forex needs a few days' lead time</td><td>Mainly international, card notification also relevant for any trip using cards abroad</td></tr>
-        <tr><td>Unabridged birth certificates for minors</td><td>South African requirement for travelling children, current rule needs confirming before this is written up properly</td><td>Upfront, early, certificate applications can take time</td><td>Bookings that include minors, primarily international</td></tr>
+        <tr><td>Unabridged birth certificates for minors</td><td>South African requirement for travelling children. A branded reference document already exists ("Child Travel Requirements", covering both parents, one parent, non-parent, unaccompanied and alternative care scenarios) that the team can attach directly rather than writing this up from scratch</td><td>Upfront, early, certificate applications can take time</td><td>Bookings that include minors, primarily international</td></tr>
         <tr><td>Local customs &amp; etiquette</td><td>Dress codes, especially for religious sites or conservative destinations</td><td>Closer to departure, alongside packing tips</td><td>Destination-dependent, mainly international, occasionally relevant domestically too</td></tr>
         <tr><td>Adapters, voltage &amp; time zones</td><td>Plug type and voltage differences, time zone shift and jet lag awareness</td><td>Closer to departure, could fold into packing tips rather than standing alone</td><td>Adapters/voltage for international trips, time zones mainly for long-haul</td></tr>
         <tr><td>Emergency contacts &amp; travel advisories</td><td>Local emergency numbers, embassy contacts, government travel advisories where relevant</td><td>Upfront, then again closer to departure</td><td>Mainly international trips</td></tr>
+        <tr><td>One-year revisit ("Remember last year?")</td><td>A nostalgic reconnection revisiting their trip highlights, gentle prompt toward dreaming about the next one, not a sales push</td><td>Around the one-year anniversary of their return date</td><td>Only sent to clients whose post-trip feedback was positive, gated on that score, skipped entirely otherwise</td></tr>
+        <tr><td>Client birthday</td><td>A genuine, low-key birthday greeting, no attached offer required, goodwill first</td><td>Annually, on the date</td><td>All clients, not gated on trip happiness since it's generic goodwill rather than trip-specific. Populated from the Date of Birth field, captured manually by the agent off the passport copy already collected for the booking</td></tr>
+        <tr><td>Milestone birthdays (30th, 40th, 50th, 60th...)</td><td>A bigger, more intentional touch than a standard birthday message, since a milestone birthday is a genuine trip-planning trigger for a lot of travellers, worth a personal note from the agent rather than an automated send</td><td>With enough lead time before the date to actually plan a trip around it, not on the day itself</td><td>Only clients where Date of Birth is on record, same field and source as the standard birthday touchpoint, just a milestone-year filter on top</td></tr>
+        <tr><td>Client wedding/relationship anniversary</td><td>A warm anniversary acknowledgment, a natural, unforced hook for suggesting an anniversary trip</td><td>Annually, on the date</td><td>Only clients where a Special Occasion Date is on record, captured by the agent when it comes up naturally in conversation (e.g. the trip itself is a honeymoon or anniversary trip), never asked for upfront or unprompted</td></tr>
       </tbody>
     </table>
 
+    <div class="note">The one-year revisit only fires for clients with a positive feedback score on record. Needs a defined threshold (e.g. a minimum star rating or NPS band) and a way to check it at send time, unhappy clients should never get a nostalgic "remember when" email a year after a trip that didn't go well.</div>
+
+    <div class="note">Two new Freshsales contact fields needed to make these three work. <b>Date of Birth</b>, populated manually by the agent from the passport copy already collected during booking, no new ask required, it's already in hand, just needs somewhere structured to live. <b>Special Occasion Date</b> plus a Type picklist (Anniversary, Honeymoon, Other), populated by the agent when it comes up naturally in conversation, for example the trip itself being booked as an anniversary or honeymoon trip, never asked for upfront or unprompted. Both are manual entry, not automated capture, so this needs a training point (see Team training) rather than a Zapier or webform change. Worth a quick POPIA check on Date of Birth specifically, since it's sensitive personal data beyond what's collected today and needs a clear purpose tied to it.</div>
+
+    <div class="note blue">The Child Travel Requirements document already exists in branded, print-ready form and covers every scenario (both parents, one parent, non-parent, unaccompanied, alternative care) with a link to the DHA advisory. Worth keeping it, and future documents like it, in the same approved attachment library referenced in the bulk deals section, so agents always grab the current version rather than an old copy floating around inboxes.</div>
     <p>Each row above still needs its own content pass, exact wording, which stage triggers it, whether it lands as an email or a resource page. This table is the map, not the copy.</p>
   </section>
 
