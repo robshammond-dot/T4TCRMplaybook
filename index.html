@@ -27,6 +27,11 @@ h2.section-title .num{background:var(--navy);color:var(--white);width:26px;heigh
 .section-sub{font-size:12px;color:var(--muted);margin-bottom:20px;margin-left:36px}
 h3.sub-title{font-family:'Nunito',sans-serif;font-size:14.5px;font-weight:800;color:var(--navy-dark);margin:22px 0 10px}
 .note{background:#FFF8E6;color:#92620A;border:1px solid #F5D98A;font-size:11.5px;padding:10px 14px;border-radius:6px;margin-bottom:16px;line-height:1.5}
+.link-card{display:flex;align-items:center;justify-content:space-between;gap:14px;background:linear-gradient(135deg,var(--navy),var(--navy-dark));color:var(--white);border-radius:8px;padding:14px 18px;margin-bottom:16px;flex-wrap:wrap}
+.link-card .lc-text{font-size:12.5px;line-height:1.5}
+.link-card .lc-text b{display:block;font-family:'Nunito',sans-serif;font-size:14px;margin-bottom:2px}
+.link-card a.lc-btn{background:var(--cyan);color:var(--navy-dark);font-size:11.5px;font-weight:800;padding:8px 16px;border-radius:20px;text-decoration:none;white-space:nowrap;flex-shrink:0}
+.link-card a.lc-btn:hover{background:#33C1F5}
 .note.blue{background:var(--cyan-light);color:var(--navy-dark);border-color:var(--cyan-mid)}
 p{font-size:12.5px;line-height:1.65;margin-bottom:10px;color:var(--text)}
 ul{margin:0 0 14px 20px}
@@ -475,6 +480,11 @@ tr:last-child td{border-bottom:none}
     <h2 class="section-title"><span class="num">10</span>Customer journey: travel readiness touchpoints</h2>
     <p class="section-sub">A different layer to everything above. This isn't a specific template, it's the content layer underneath the emails, what travel-readiness information actually matters, when it's genuinely useful to share it, and what depends on destination or trip type. This section maps the touchpoints, the copy and exact trigger for each gets built out separately.</p>
 
+    <div class="link-card">
+      <div class="lc-text"><b>See it as a visual journey</b>The full guest journey, T-330 days to the one-year loop back, laid out phase by phase.</div>
+      <a class="lc-btn" href="https://robshammond-dot.github.io/T4TCustomerTouchPoints/" target="_blank" rel="noopener">View the journey map &rarr;</a>
+    </div>
+
     <div class="note">Timing matters as much as content. Shared too early, it gets forgotten. Shared too late, there's no runway left to act on it, visas being the clearest example: guidance is only actionable once there's a confirmed itinerary and paid deposit to plan real dates against, so it needs to land as an upfront heads up early, then a firm reminder once those pieces exist.</div>
     <div class="note blue">Destination and trip type decide what's relevant, this can't be one generic checklist sent to every client. A local trip still needs a valid ID and possibly a driver's license if there's a flight or car rental involved, but has no visa or health considerations. A long-haul international trip needs the full set. Getting this right depends on having destination knowledge in place first, which is exactly why this connects back to the auto assignment thinking above, knowing the destination early is what makes it possible to know which of these touchpoints even apply.</div>
 
@@ -509,6 +519,20 @@ tr:last-child td{border-bottom:none}
 
     <div class="note blue">The Child Travel Requirements document already exists in branded, print-ready form and covers every scenario (both parents, one parent, non-parent, unaccompanied, alternative care) with a link to the DHA advisory. Worth keeping it, and future documents like it, in the same approved attachment library referenced in the bulk deals section, so agents always grab the current version rather than an old copy floating around inboxes.</div>
     <p>Each row above still needs its own content pass, exact wording, which stage triggers it, whether it lands as an email or a resource page. This table is the map, not the copy.</p>
+
+    <h3 class="sub-title">Working across different lead times</h3>
+    <p>A booking can land next week, in three months, or a year out, there's no such thing as a typical runway. The "Timing" column above still holds, but it has to be read as a rule relative to departure and to CRM stage changes, not as a fixed calendar month count from the day someone booked. Two things anchor every touchpoint regardless of how much time exists: the departure date, known the moment a booking is confirmed, and stage changes like deposit paid, quote issued, or final payment. Nothing needs to wait for a specific month to arrive.</p>
+    <div class="note">The fully automated lifecycle emails (Enquiry Received, Meet Your Agent, Consultation and Quote follow-ups, Bon Voyage, Welcome Home) already work regardless of lead time, since they're triggered by an event or CRM stage, not a calendar date. The touchpoints in the map above are the ones that need explicit lead-time logic, since several of them assume there's slack to spread across.</div>
+
+    <table>
+      <thead><tr><th style="width:18%">Runway to departure</th><th style="width:41%">Practical touchpoints (visas, passports, health, insurance, packing, luggage)</th><th style="width:41%">Anticipation content (dream board, halfway milestone, countdown series)</th></tr></thead>
+      <tbody>
+        <tr><td>Long, 6+ months</td><td>Full sequence as mapped, upfront heads up well ahead of time, then a firm reminder closer to departure</td><td>Plays out in full, there's genuine room to build excitement slowly</td></tr>
+        <tr><td>Standard, 6 weeks to 6 months</td><td>Compressed, upfront and reminder still both happen, just closer together in time</td><td>Skipped, there's no slow build to fill, trying to force it reads as padding rather than genuine anticipation</td></tr>
+        <tr><td>Short, under 6 weeks (including next-week bookings)</td><td>Combined into a single "everything you need before you go" send covering the essentials together, rather than spread across separate emails there's no time for</td><td>Skipped entirely</td></tr>
+      </tbody>
+    </table>
+    <div class="note blue">Short-runway bookings are the one place genuine urgency language belongs, unlike the lifecycle sequences earlier in this doc where manufactured urgency was explicitly ruled out. If someone booked with three weeks to go, saying so plainly ("your trip is in 3 weeks, here's what still needs sorting") is honest, not pushy.</div>
   </section>
 
 </main>
